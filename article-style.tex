@@ -1,0 +1,48 @@
+\usepackage{graphicx}            % For image inclusion
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}  % For custom colors
+\usepackage{academicons}               % vector ORCID icon
+\definecolor{orcidgreen}{HTML}{A6CE39} % official ORCID colour
+
+\newcommand{\orcidlink}[1]{%
+  \href{https://orcid.org/#1}{\textcolor{orcidgreen}{\aiOrcid}}}
+
+% Define department purple color using RGB values directly
+\definecolor{deptpurple}{RGB}{75,59,164}  % 4B3BA4 in RGB values
+
+% Load hyperref with explicit color options
+\RequirePackage[% 
+  xetex,
+  colorlinks=true,
+  linkcolor=deptpurple,
+  filecolor=deptpurple,
+  citecolor=deptpurple,
+  urlcolor=deptpurple,
+  pdfborder={0 0 0}]{hyperref}
+
+\usepackage{fontspec}
+\usepackage{changepage}          % For adjustwidth environment
+
+% --- Set fonts ---
+\setmainfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro}
+\setsansfont[Mapping=tex-text]{Minion Pro}
+\setmonofont[Mapping=tex-text,Scale=0.8]{Iosevka}
+
+% --- Title Page Setup ---
+\makeatletter
+\renewcommand{\@maketitle}{%
+  \vspace*{0.25\textheight}
+  \begin{flushleft}
+    {\LARGE\bfseries \@title\par}
+    \vskip 2em
+    {\large\bfseries
+      Cameron Beckett\,\orcidlink{0009-0005-8006-776X}\newline  % ← your ORCID
+      \normalsize\mdseries\itshape The University of Chicago\newline
+      \small\mdseries\normalfont\ttfamily\href{mailto:cbeckett@uchicago.edu}{cbeckett@uchicago.edu}\par}
+  \end{flushleft}
+  \vskip 3em
+}
+\makeatother
+\renewenvironment{abstract}
+  {\begin{adjustwidth}{2em}{2em}\small\noindent\textbf{Abstract:} }
+  {\end{adjustwidth}\par\vskip 2em}
+\makeatother
